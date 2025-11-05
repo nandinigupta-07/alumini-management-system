@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Linkedin, Instagram, Github, Send } from 'lucide-react';
 
 function Footer() {
   return (
@@ -12,6 +13,18 @@ function Footer() {
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               Connecting students, alumni, and opportunities. Building a vibrant community that extends beyond graduation.
             </p>
+            {/* Social */}
+            <div className="flex items-center gap-4">
+              <a href="#" aria-label="LinkedIn" className="p-2 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-blue-600">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="Instagram" className="p-2 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-pink-400 hover:bg-pink-50 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-pink-600">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="GitHub" className="p-2 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Github className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -73,17 +86,19 @@ function Footer() {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} CampusConnect Alumni. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm">
-            <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Terms
-            </a>
-            <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Support
-            </a>
-          </div>
+          {/* Newsletter */}
+          <form className="w-full md:w-auto flex items-center gap-2">
+            <input
+              type="email"
+              required
+              placeholder="Subscribe with your email"
+              className="w-full md:w-72 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-800 dark:text-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+            <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors">
+              <Send className="h-4 w-4" />
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
     </footer>

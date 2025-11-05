@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X, Moon, Sun, GraduationCap } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <header className={`sticky top-0 z-50 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-shadow ${scrolled ? 'bg-white/90 dark:bg-gray-900/90 shadow-md' : 'bg-white/60 dark:bg-gray-900/60 shadow-none'}`}>
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -32,11 +40,11 @@ function Navbar() {
               <NavLink 
                 to="/" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Home
@@ -46,11 +54,11 @@ function Navbar() {
               <NavLink 
                 to="/events" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Events
@@ -60,11 +68,11 @@ function Navbar() {
               <NavLink 
                 to="/directory" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Directory
@@ -74,11 +82,11 @@ function Navbar() {
               <NavLink 
                 to="/jobs" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Jobs
@@ -88,11 +96,11 @@ function Navbar() {
               <NavLink 
                 to="/alumni" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Alumni
@@ -102,11 +110,11 @@ function Navbar() {
               <NavLink 
                 to="/contact" 
                 className={({isActive}) => 
-                  `hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  `relative group hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
                     isActive 
                       ? 'text-blue-700 dark:text-blue-400 font-semibold' 
                       : 'text-gray-700 dark:text-gray-300'
-                  }`
+                  } after:content-[""] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-600 after:to-blue-400 after:transition-transform after:duration-300 group-hover:after:scale-x-100`
                 }
               >
                 Contact
