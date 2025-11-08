@@ -3,44 +3,47 @@ import { motion } from 'framer-motion';
 import { Quote, ChevronLeft, ChevronRight, Award, Users } from 'lucide-react';
 import SuccessStories from '../components/SuccessStories';
 import Testimonials from '../components/Testimonials';
-
+import Manas from '../assets/ManasSingh.jpg';
+import Sikha from '../assets/SikhaJain.jpg';
+import Sahil from '../assets/SahilSrivastava.jpg';
+import Tanuj from '../assets/TanujJohal.jpg';
 // Sample success stories data
 const successStoriesData = [
   {
     id: 1,
-    name: 'Aisha Bello',
-    role: 'Product Manager',
-    company: 'NexaSoft',
-    year: 2018,
+    name: 'Manas Singh',
+    role: 'Senior Product Manager',
+    company: 'CISCO',
+    year: 2026,
     story: 'Mentorship through CampusConnect helped me pivot into Product Management and land my dream role. The alumni network provided invaluable guidance during my career transition.',
-    image: 'aisha'
+    image: Manas
   },
   {
     id: 2,
-    name: 'Daniel Chen',
+    name: 'Sikha Jain',
     role: 'Senior Engineer',
     company: 'CloudCore',
-    year: 2016,
+    year: 2019,
     story: 'I found my current team through the alumni directory and events. The connections I made have been instrumental in my career growth and professional development.',
-    image: 'daniel'
+    image: Sikha
   },
   {
     id: 3,
-    name: 'Fatima Khan',
-    role: 'Data Scientist',
-    company: 'InsightAI',
-    year: 2017,
+    name: 'Tanuj Johal',
+    role: 'Software Developer',
+    company: 'TEKION',
+    year: 2021,
     story: 'The network and referrals opened doors I never imagined. CampusConnect gave me access to opportunities that transformed my career path.',
-    image: 'fatima'
+    image: Tanuj
   },
   {
     id: 4,
-    name: 'Michael Okafor',
-    role: 'UX Designer',
-    company: 'PixelWorks',
-    year: 2019,
+    name: 'Sahil Srivastava',
+    role: 'Data Scientist',
+    company: 'Hotstar',
+    year: 2023,
     story: 'Through alumni events, I connected with mentors who helped me refine my portfolio and secure positions at top design agencies.',
-    image: 'michael'
+    image: Sahil
   }
 ];
 
@@ -49,7 +52,7 @@ const testimonialsData = [
   {
     id: 1,
     quote: 'CampusConnect keeps me involved and gives back to students. It\'s rewarding to mentor the next generation and see them succeed.',
-    name: 'Grace Okoye',
+    name: 'Pawan Gupta',
     role: 'Marketing Director',
     grad: 'Class of 2016',
     image: 'grace'
@@ -57,7 +60,7 @@ const testimonialsData = [
   {
     id: 2,
     quote: 'Great platform for mentorship and real opportunities. The community is supportive and the events are always valuable.',
-    name: 'Ravi Patel',
+    name: 'Rakhi Sharma',
     role: 'Software Engineer',
     grad: 'Class of 2018',
     image: 'ravi'
@@ -65,7 +68,7 @@ const testimonialsData = [
   {
     id: 3,
     quote: 'I love the events and the positive energy of the community. It\'s amazing how the network continues to grow and support each other.',
-    name: 'Emily Johnson',
+    name: 'Hemant Patel',
     role: 'Business Analyst',
     grad: 'Class of 2015',
     image: 'emily'
@@ -73,7 +76,7 @@ const testimonialsData = [
   {
     id: 4,
     quote: 'The alumni directory helped me find my current job. The connections here are genuine and always willing to help.',
-    name: 'David Kim',
+    name: 'Aarya Mishra',
     role: 'DevOps Engineer',
     grad: 'Class of 2019',
     image: 'david'
@@ -160,14 +163,18 @@ function Alumni() {
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-2xl font-bold">
-                    {successStoriesData[currentStory].name.split(' ').map(n => n[0]).join('')}
+                      <img
+                          src={successStoriesData[currentStory].image}
+                          alt={successStoriesData[currentStory].name}
+                          className="h-full w-full object-cover"
+                        />
                   </div>
                   <div>
                     <div className="font-bold text-lg">{successStoriesData[currentStory].name}</div>
                     <div className="text-blue-100">
                       {successStoriesData[currentStory].role} at {successStoriesData[currentStory].company}
                     </div>
-                    <div className="text-blue-200 text-sm">Class of {successStoriesData[currentStory].year}</div>
+                    <div className="text-blue-200 text-sm">Batch of {successStoriesData[currentStory].year}</div>
                   </div>
                 </div>
               </motion.div>
