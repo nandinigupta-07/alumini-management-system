@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Calendar, MapPin, Clock, Users } from 'lucide-react';
 
 // Sample events data
@@ -71,13 +71,36 @@ const eventsData = [
   }
 ];
 
+// Parse date and time properly
+const parseEventDateTime = (dateString, timeString) => {
+  const date = new Date(dateString);
+  const timeMatch = timeString.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (timeMatch) {
+    let hours = parseInt(timeMatch[1], 10);
+    const minutes = parseInt(timeMatch[2], 10);
+    const period = timeMatch[3].toUpperCase();
+    
+    if (period === 'PM' && hours !== 12) {
+      hours += 12;
+    } else if (period === 'AM' && hours === 12) {
+      hours = 0;
+    }
+    
+    date.setHours(hours, minutes, 0, 0);
+  }
+  return date;
+};
+
 function Events() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [selectedFilter, setSelectedFilter] = useState('All');
 
   // Get next upcoming event
   const nextEvent = eventsData[0];
-  const nextEventDate = new Date(nextEvent.date + 'T' + nextEvent.time);
+  const nextEventDate = useMemo(
+    () => parseEventDateTime(nextEvent.date, nextEvent.time),
+    [nextEvent.date, nextEvent.time]
+  );
 
   useEffect(() => {
     const tick = () => {
@@ -92,7 +115,7 @@ function Events() {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [nextEventDate]);
 
   const eventTypes = ['All', ...new Set(eventsData.map(e => e.type))];
   const filteredEvents = selectedFilter === 'All' 
